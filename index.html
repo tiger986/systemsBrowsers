@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>量子蜕变教育</title>
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+	<div class="content">
+	    <img class="and hide" src="img/and.png" alt="">
+	    <img class="ios hide" src="img/ios.png" alt="">
+	</div>
+</body>
+
+<script src="jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+    $(function () {
+    	/*var ua = navigator.userAgent.toLowerCase();
+        var isIOS = /iphone|ipad|ipod/.test(ua);*/
+       
+    	var ua = window.navigator.userAgent;
+        window.qvendor = {};
+        //window.qvendor.mobile = /AppleWebKit.*Mobile.*/.test(ua);
+        //window.qvendor.iphone = /iphone/gi.test(ua);
+        //window.qvendor.ipad = /ipad/gi.test(ua);
+        //window.qvendor.ipod = /ipod/gi.test(ua);
+        //window.qvendor.qqb = /mqqbrowser/gi.test(ua);
+        window.qvendor.android = /android/gi.test(ua);
+        window.qvendor.ios = /(iphone|ipad|ipod)/gi.test(ua);
+        window.qvendor.weixin = /micromessenger/gi.test(ua);
+        window.qvendor.qq = / qq/gi.test(ua);
+        window.qvendor.weibo = /weibo/gi.test(ua);
+        if(qvendor.android){
+            if(qvendor.weixin||qvendor.qq||qvendor.weibo){
+           		$(".and").removeClass("hide");
+            }else{
+            	window.location.href = 'https://www.baidu.com/';  
+            }
+        }else if(qvendor.ios){
+        	if(qvendor.weixin||qvendor.qq||qvendor.weibo){
+           		$(".ios").removeClass("hide");
+            }else{
+            	window.location.href = 'https://www.hao123.com/'; 
+            }
+        }
+        
+    })
+</script>
+
+<script>
+    /*rem设置设计稿为750*/
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+
+</html>
